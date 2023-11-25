@@ -1,0 +1,77 @@
+@startuml
+
+class Empleado{
+     +Salario()
+} 
+class Laboratorio{}
+class Mezclas {}
+class Manufactura 
+class Mantenimiento_Correctivo{
+    +Inspecciones()
+  +Cambio de piezas()
+  +Limpieza y lubricacion()
+}
+class Gestion_de_Respuesto{
+    +Mantener Inventario()
+    +Control de piezas()
+}
+class Mejora_Continua{
+    +Investigaciones()
+    +Invercion de nuevas ternicas()
+} 
+
+class Embalaje {
+  +proteccionProducto()
+  +manejoTransporte()
+  +utilizacionEquipoTransporte()
+}
+
+class LineaEmpaque {
+  +embalarProducto()
+}
+
+class Producto {
+  -referencia
+  -participacionProduccion
+  +getReferencia()
+  +getParticipacionProduccion()
+}
+
+class Operario {
+  -nombre() 
+  +realizarVerificacion()
+}
+
+class Canasta {
+  -productoEmbalado
+  -cantidad
+  -calidad
+  
+  -fechaEmbalaje
+  +verificarCantidad()
+  +verificarCalidad()
+  +verificarFechaEmbalaje()
+}
+
+class GestiónHumana {}
+class SeguridadIndustrial{}
+EmpresaPanificadora "1" *-- "1" VicepresidenciaEjecutiva
+VicepresidenciaEjecutiva "1" *-- "1" Laboratorio
+VicepresidenciaEjecutiva "1" *-- "1" Mezclas
+VicepresidenciaEjecutiva "1" *-- "1" Manufactura
+VicepresidenciaEjecutiva "1" *-- "1" GenerenciaAdministrativa 
+VicepresidenciaEjecutiva "1" *-- "1" Mantenimiento 
+VicepresidenciaEjecutiva "1" *-- "1" RevisoriaFiscal
+Manufactura "1" *-- "1..*" Embalaje
+Embalaje "1" *-- "1..*" LineaEmpaque
+LineaEmpaque "1" *-- "1..*" Producto
+LineaEmpaque "1" *-- "1..*" Operario
+Operario "1..*" *-- "1..*" Canasta
+VicepresidenciaEjecutiva "1" *-- "1" GestiónHumana
+VicepresidenciaEjecutiva "1" *-- "1" SeguridadIndustrial  
+ Mantenimiento"1" *-- "1" Mantenimiento_Correctivo
+ Mantenimiento"1" *-- "1" Gestion_de_Respuesto
+Mantenimiento"1" *-- "1" Mejora_Continua
+Mantenimiento_Correctivo "1" *-- "1" Empleado
+
+@enduml
