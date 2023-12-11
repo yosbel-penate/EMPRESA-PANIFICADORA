@@ -1,4 +1,5 @@
 @startuml EmpresaPanificadora
+class Dirección{}
 class EmpresaPanificadora{}
 class VicepresidenciaEjecutiva{}
 class Laboratorio {}
@@ -40,7 +41,9 @@ class Canasta {
   +verificarCalidad()
   +verificarFechaEmbalaje()
 }
-EmpresaPanificadora "1" *-- "1" VicepresidenciaEjecutiva
+
+EmpresaPanificadora "1" *-- "1" Dirección 
+Dirección "1" *-- "1" VicepresidenciaEjecutiva
 VicepresidenciaEjecutiva "1" *-- "1" Laboratorio
 VicepresidenciaEjecutiva "1" *-- "1" Mezclas
 VicepresidenciaEjecutiva "1" *-- "1" Manufactura 
